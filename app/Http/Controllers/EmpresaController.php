@@ -12,7 +12,11 @@ class EmpresaController extends Controller
     {
         $empresas = Empresa::get();
 
-        return response()->json($empresas, 200, [], JSON_PRETTY_PRINT);
+        if($empresas){
+            return response()->json($empresas, 200, [], JSON_PRETTY_PRINT);
+        }
+
+        return response()->json([], 404);
     }
 
     public function show(Empresa $empresa)
@@ -20,6 +24,8 @@ class EmpresaController extends Controller
         if($empresa){
             return response()->json($empresa, 200, [], JSON_PRETTY_PRINT);
         }
+
+        return response()->json([], 404);
     }
 
     public function edit($recnum)

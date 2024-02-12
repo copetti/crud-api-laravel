@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('empresas', function (Blueprint $table) {
             $table->bigInteger('recnum')->unique();
-            $table->unsignedDecimal('codigo',4,0)->index();
+            $table->decimal('codigo',4,0)->index();
             $table->decimal('empresa',4,0);
             $table->string('sigla', 40);
             $table->string('razao_social', 255);

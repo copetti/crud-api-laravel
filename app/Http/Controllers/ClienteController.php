@@ -11,7 +11,11 @@ class ClienteController extends Controller
     {
         $clientes = Cliente::get();
 
-        return response()->json($clientes, 200, [], JSON_PRETTY_PRINT);
+        if($clientes){
+            return response()->json($clientes, 200, [], JSON_PRETTY_PRINT);
+        }
+
+        return response()->json([], 404);
     }
 
     public function show(Cliente $cliente)
@@ -19,6 +23,8 @@ class ClienteController extends Controller
         if($cliente){
             return response()->json($cliente, 200, [], JSON_PRETTY_PRINT);
         }
+
+        return response()->json([], 404);
     }
 
     public function edit($recnum)
